@@ -1,7 +1,8 @@
+import { Inbox } from "@/02 _pages/inbox/ui/Inbox";
 import React from "react";
 
 const App = () => {
-    return <h1>Hello, React + TypeScript + Webpack!</h1>;
+    return <Inbox />;
 };
 
 export default App;

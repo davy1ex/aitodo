@@ -33,6 +33,21 @@
       ],
       "@app/*": [
         "01_app/*"
+      ],
+      "@pages/*": [
+        "02_pages/*"
+      ],
+      "@widgets/*": [
+        "03_widgets/*"
+      ],
+      "@features/*": [
+        "04_features/*"
+      ],
+      "@entities/*": [
+        "05_entities/*"
+      ],
+      "@shared/*": [
+        "06_shared/*"
       ]
     },
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
