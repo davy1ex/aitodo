@@ -11,7 +11,7 @@ export const getAllTasks = async () => {
     return await readAllFromLocalStorage(TASK_KEY)
 }
 
-export const toggleTask = async (taskId) => {
+export const toggleTask = async (taskId: number) => {
     let tasks = readAllFromLocalStorage(TASK_KEY)
     const updatedTasks = tasks.map((task: taskType) => {
         if (task.taskId === taskId) {

@@ -1,2 +1,2 @@
-export { toggleTask } from "@/05_entities/task";
+export { useToggleTask } from "./api/useToggleTask";
 

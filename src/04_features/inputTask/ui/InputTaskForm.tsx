@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { addInputedTask } from "../api/useAddTask"
+import { useTaskStore } from "@/05_entities/task"
 // todo add interface
 export const InputTaskForm = ({ onAddTask }: { onAddTask: () => void }) => {
     const [inputValue, setInputeValue] = useState("")
@@ -7,8 +7,7 @@ export const InputTaskForm = ({ onAddTask }: { onAddTask: () => void }) => {
     const handleKeyPressed = (key: any) => { // todo here adding by enter press
         if (key == "Enter") {
             console.log("Task will be adding Coming Soon")
-            addInputedTask(inputValue)
-            onAddTask()
+            onAddTask(inputValue)
         }
     }
 
