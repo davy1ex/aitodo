@@ -7,23 +7,26 @@ type Props = {
 }
 
 export function ColumnTasks(props: Props) {
-    const tasksMock = [
-        {
-            taskId: 0,
-            taskName: "Помыть кота",
-            isCompleted: false
-        },
-        {
-            taskId: 1,
-            taskName: "купиьб кота",
-            isCompleted: false
-        },
-        {
-            taskId: 2,
-            taskName: "продать кота",
-            isCompleted: true
-        }
-    ]
+    const [taskName, setTaskName] = useState("")
+    const [tasksMock, setTasksMock] = useState(
+        [
+            {
+                taskId: 0,
+                taskName: "Помыть кота",
+                isCompleted: false
+            },
+            {
+                taskId: 1,
+                taskName: "купиьб кота",
+                isCompleted: false
+            },
+            {
+                taskId: 2,
+                taskName: "продать кота",
+                isCompleted: true
+            }
+        ]
+    )
     const [tasks, setTasks] = useState<Task[]>(tasksMock)
 
     const onTaskEdit = (taskId: number, text: string) => {
@@ -37,6 +40,21 @@ export function ColumnTasks(props: Props) {
         )
         console.log("NOW", tasks)
     }
+
+    const onInputTaskKey = (key) => {
+        console.log(key)
+        console.log(tasks)
+        if (key.key === "Enter") {
+            const newTask = {
+                taskId: crypto.randomUUID(),
+                taskName: taskName,
+                isCompleted: false
+            }
+            setTaskName("")
+            setTasks([...tasks, newTask])
+        }
+    }
+
     return (
         <div className='columnTasksContainer'>
             <div className="columnTasksHeader">{props.listName}</div>
@@ -44,7 +62,14 @@ export function ColumnTasks(props: Props) {
             <div className="tasksContainer">
                 <div className="columnTasksContent">
 
-                    <input type="text" className="tasksInput" placeholder={`input new ${props.listName.toLowerCase()}`} /> {/* todo make toggle for task or habbit input */}
+                    <input
+                        type="text"
+                        className="tasksInput"
+                        placeholder={`input new ${props.listName.toLowerCase()}`}
+                        value={taskName}
+                        onChange={(e) => setTaskName(e.target.value)}
+                        onKeyDown={(key) => { onInputTaskKey(key) }}
+                    /> {/* todo make toggle for task or habbit input */}
                     <div className="columnTaskWrapper">
                         {tasks.map((task) => (
                             <TaskComponent task={task} onTaskEdit={onTaskEdit} />
